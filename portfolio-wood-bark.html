@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فن قشرة الخشب | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bark-dark: #2C1A0E;
+    --bark-warm: #8B4513;
+    --bark-tan: #C4894A;
+    --bark-light: #E8C99A;
+    --cream: #F5EDD8;
+    --off-white: #FAF6EF;
+    --text-dark: #1A0F06;
+    --text-mid: #4A2C14;
+    --text-muted: #8B6B4A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--off-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(250,246,239,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--bark-light);
+  }
+  .logo {
+    font-family: 'Amiri', serif;
+    font-size: 1.3rem;
+    color: var(--bark-dark);
+  }
+  .logo span { color: var(--bark-warm); }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--bark-warm); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 7rem 4rem 4rem;
+    gap: 3rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--bark-warm);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--bark-dark);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title em { font-style: italic; color: var(--bark-warm); }
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--bark-dark);
+    color: var(--cream);
+    padding: 0.85rem 2rem;
+    border: none;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--bark-warm); }
+  .btn-outline {
+    border: 1px solid var(--bark-tan);
+    color: var(--text-mid);
+    padding: 0.85rem 2rem;
+    background: transparent;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--bark-light); }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .rings-svg {
+    width: 100%;
+    max-width: 420px;
+    animation: slowRotate 60s linear infinite;
+  }
+  @keyframes slowRotate { to { transform: rotate(360deg); } }
+  .hero-badge {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    background: var(--bark-dark);
+    color: var(--cream);
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-badge .num { font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--bark-light); line-height: 1; }
+  .hero-badge .lbl { font-size: 0.55rem; letter-spacing: 0.1em; color: var(--bark-tan); text-transform: uppercase; margin-top: 0.2rem; }
+
+  /* MARQUEE */
+  .marquee-section {
+    border-top: 1px solid var(--bark-light);
+    border-bottom: 1px solid var(--bark-light);
+    background: var(--cream);
+    padding: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track { display: inline-flex; animation: marquee 18s linear infinite; gap: 2.5rem; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  .marquee-item {
+    font-family: 'Amiri', serif;
+    font-size: 1rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .marquee-dot { width: 4px; height: 4px; background: var(--bark-tan); border-radius: 50%; display: inline-block; }
+
+  /* SHARED */
+  section { position: relative; z-index: 1; }
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--bark-warm);
+    margin-bottom: 0.8rem;
+  }
+  .section-heading {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--bark-dark);
+    line-height: 1.25;
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 5rem 4rem;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-photo-wrap { display: flex; flex-direction: column; gap: 1.2rem; }
+  .about-photo-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border: 1px solid var(--bark-light);
+  }
+  .about-photo-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s; }
+  .about-photo-frame:hover .about-photo-img { transform: scale(1.04); }
+  .about-photo-badge {
+    position: absolute;
+    top: 0.8rem; right: 0.8rem;
+    background: var(--bark-dark);
+    color: var(--cream);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    font-weight: 700;
+  }
+
+  /* Contact card */
+  .about-contact-card {
+    background: var(--cream);
+    border: 1px solid var(--bark-light);
+    padding: 1.2rem;
+  }
+  .about-contact-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--bark-warm);
+    margin-bottom: 1rem;
+  }
+  .about-contact-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .about-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .about-contact-item:hover { background: var(--off-white); border-color: var(--bark-light); }
+  .about-contact-icon {
+    width: 32px; height: 32px;
+    background: var(--bark-dark);
+    color: var(--bark-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.25s;
+  }
+  .about-contact-item:hover .about-contact-icon { background: var(--bark-warm); }
+  .about-contact-text {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-mid);
+    min-width: 52px;
+  }
+  .about-contact-value {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-right: auto;
+    font-weight: 300;
+  }
+
+  /* About right */
+  .about-right { padding-top: 0.5rem; }
+  .about-intro {
+    font-family: 'Amiri', serif;
+    font-size: 1.25rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+  .about-body {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 2;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    border-top: 1px solid var(--bark-light);
+    padding-top: 1.8rem;
+  }
+  .stat-num { font-family: 'Amiri', serif; font-size: 2.5rem; color: var(--bark-dark); line-height: 1; }
+  .stat-unit { font-size: 1.1rem; color: var(--bark-warm); }
+  .stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+  /* PORTFOLIO */
+  .portfolio { padding: 5rem 4rem; background: var(--cream); }
+  .portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .portfolio-filter { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--bark-light);
+    background: transparent;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .filter-btn.active, .filter-btn:hover { background: var(--bark-dark); color: var(--cream); border-color: var(--bark-dark); }
+
+  .grid-masonry {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 80px;
+    gap: 0.8rem;
+  }
+  .work-card { position: relative; overflow: hidden; background: var(--bark-light); }
+  .work-card:nth-child(1)  { grid-column: 1/6;  grid-row: 1/5;  }
+  .work-card:nth-child(2)  { grid-column: 6/10; grid-row: 1/4;  }
+  .work-card:nth-child(3)  { grid-column: 10/13;grid-row: 1/3;  }
+  .work-card:nth-child(4)  { grid-column: 6/9;  grid-row: 4/7;  }
+  .work-card:nth-child(5)  { grid-column: 9/13; grid-row: 3/7;  }
+  .work-card:nth-child(6)  { grid-column: 1/5;  grid-row: 5/8;  }
+  .work-card:nth-child(7)  { grid-column: 5/9;  grid-row: 7/10; }
+  .work-card:nth-child(8)  { grid-column: 9/13; grid-row: 7/10; }
+  .work-card:nth-child(9)  { grid-column: 1/5;  grid-row: 8/11; }
+  .work-card:nth-child(10) { grid-column: 5/9;  grid-row: 10/13;}
+  .work-card:nth-child(11) { grid-column: 9/13; grid-row: 10/12;}
+  .work-card:nth-child(12) { grid-column: 1/5;  grid-row: 11/13;}
+
+  .work-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s; }
+  .work-card:hover img { transform: scale(1.06); }
+  .card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(44,26,14,0.88) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.4s;
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 1.2rem;
+  }
+  .work-card:hover .card-overlay { opacity: 1; }
+  .card-title { font-family: 'Amiri', serif; font-size: 1rem; color: var(--cream); margin-bottom: 0.15rem; }
+  .card-meta { font-size: 0.7rem; color: var(--bark-light); }
+
+  /* PROCESS */
+  .process { padding: 5rem 4rem; }
+  .process-header { text-align: center; margin-bottom: 4rem; }
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    position: relative;
+  }
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 2rem; right: 12.5%; left: 12.5%;
+    height: 1px; background: var(--bark-light); z-index: 0;
+  }
+  .step { text-align: center; position: relative; z-index: 1; }
+  .step-num {
+    width: 3.5rem; height: 3.5rem;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--bark-light);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem;
+    font-family: 'Amiri', serif; font-size: 1.2rem; color: var(--bark-warm);
+    transition: all 0.3s;
+  }
+  .step:hover .step-num { background: var(--bark-dark); color: var(--cream); border-color: var(--bark-dark); }
+  .step-title { font-family: 'Amiri', serif; font-size: 1rem; color: var(--bark-dark); margin-bottom: 0.6rem; }
+  .step-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.8; font-weight: 300; }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 5rem 4rem; background: var(--bark-dark); color: var(--cream); }
+  .testimonials .section-label { color: var(--bark-tan); }
+  .testimonials .section-heading { color: var(--cream); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .testimonial-card { border: 1px solid rgba(196,137,74,0.2); padding: 1.8rem; position: relative; }
+  .testimonial-card::before {
+    content: '"';
+    font-family: 'Amiri', serif; font-size: 4.5rem;
+    color: var(--bark-warm); opacity: 0.3;
+    position: absolute; top: -0.3rem; right: 0.8rem; line-height: 1;
+  }
+  .testimonial-text { font-family: 'Amiri', serif; font-size: 1rem; line-height: 1.9; color: var(--bark-light); font-style: italic; margin-bottom: 1.2rem; }
+  .testimonial-author { font-size: 0.82rem; font-weight: 700; color: var(--bark-tan); }
+  .testimonial-role { font-size: 0.72rem; color: rgba(196,137,74,0.6); margin-top: 0.2rem; }
+
+  /* CONTACT */
+  .contact { padding: 5rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .contact-tagline { font-family: 'Amiri', serif; font-size: 2rem; color: var(--bark-dark); line-height: 1.4; margin-bottom: 1.2rem; }
+  .contact-tagline em { font-style: italic; color: var(--bark-warm); }
+  .contact-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 2; font-weight: 300; margin-bottom: 1.5rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.7rem; }
+  .contact-link { font-size: 0.88rem; color: var(--bark-warm); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; transition: gap 0.3s; }
+  .contact-link:hover { gap: 1rem; }
+  .contact-link::before { content: '←'; font-size: 0.78rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+  .form-field input, .form-field textarea {
+    width: 100%; padding: 0.9rem 1.1rem;
+    border: 1px solid var(--bark-light);
+    background: var(--cream);
+    font-family: 'Tajawal', sans-serif; font-size: 0.88rem;
+    color: var(--text-dark); outline: none; transition: border-color 0.3s; resize: none;
+  }
+  .form-field input:focus, .form-field textarea:focus { border-color: var(--bark-warm); }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: var(--text-muted); }
+  .form-field textarea { height: 110px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--bark-light);
+    padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo { font-family: 'Amiri', serif; font-size: 1.1rem; color: var(--bark-dark); }
+  .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+  .footer-social { display: flex; gap: 1.2rem; }
+  .footer-social a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+  .footer-social a:hover { color: var(--bark-warm); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ══════════════════════════════════════
+     MOBILE — max 768px
+  ══════════════════════════════════════ */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.2rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.78rem; }
+
+    /* Hero stacks vertically */
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 6rem 1.5rem 3rem;
+      gap: 2rem;
+      text-align: center;
+    }
+    .hero-visual { order: -1; }
+    .rings-svg { max-width: 240px; }
+    .hero-badge { width: 80px; height: 80px; bottom: 0; right: 0; }
+    .hero-badge .num { font-size: 1.4rem; }
+    .hero-badge .lbl { font-size: 0.45rem; }
+    .hero-ctas { justify-content: center; }
+
+    /* About stacks */
+    .about {
+      grid-template-columns: 1fr;
+      padding: 3.5rem 1.5rem;
+      gap: 2rem;
+    }
+    .about-photo-frame { aspect-ratio: 4/3; max-height: 280px; }
+
+    /* Portfolio — 2 col simple grid on mobile */
+    .portfolio { padding: 3.5rem 1.5rem; }
+    .grid-masonry {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 160px;
+      gap: 0.6rem;
+    }
+    .work-card:nth-child(n) { grid-column: auto; grid-row: auto; }
+    /* first card spans full width */
+    .work-card:nth-child(1) { grid-column: 1 / -1; grid-row: auto; height: 220px; }
+
+    /* Process — 2 col */
+    .process { padding: 3.5rem 1.5rem; }
+    .steps-row { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .steps-row::before { display: none; }
+
+    /* Testimonials — 1 col */
+    .testimonials { padding: 3.5rem 1.5rem; }
+    .testimonials-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+    /* Contact — stacks */
+    .contact { grid-template-columns: 1fr; padding: 3.5rem 1.5rem; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+
+    footer { padding: 1.5rem; flex-direction: column; text-align: center; gap: 0.8rem; }
+
+    .portfolio-header { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 420px) {
+    .hero-title { font-size: 2.2rem; }
+    .grid-masonry { grid-template-columns: 1fr; }
+    .work-card:nth-child(1) { grid-column: 1; }
+    .steps-row { grid-template-columns: 1fr; }
+    .nav-links { gap: 0.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">قشرة <span>&</span> خشب</div>
+  <ul class="nav-links">
+    <li><a href="#about">من أنا</a></li>
+    <li><a href="#portfolio">الأعمال</a></li>
+    <li><a href="#process">الأسلوب</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text reveal">
+    <p class="hero-eyebrow">فنان قشرة الخشب</p>
+    <h1 class="hero-title">
+      حين تتحدث<br>
+      <em>الطبيعة</em><br>
+      بصمت الخشب
+    </h1>
+    <p class="hero-desc">
+      أعمال فنية من قشرة الخشب الطبيعية — كل قطعة تحكي قصة شجرة وتحمل روح الغابة.
+    </p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn-primary">استعرض الأعمال</a>
+      <a href="#contact" class="btn-outline">اطلب قطعتك</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <svg class="rings-svg" viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="220" cy="220" r="210" fill="none" stroke="#E8C99A" stroke-width="1"/>
+      <circle cx="220" cy="220" r="196" fill="none" stroke="#C4894A" stroke-width="0.8"/>
+      <circle cx="220" cy="220" r="178" fill="none" stroke="#D4821A" stroke-width="1.2"/>
+      <circle cx="220" cy="220" r="162" fill="none" stroke="#8B4513" stroke-width="0.6"/>
+      <circle cx="220" cy="220" r="148" fill="none" stroke="#C4894A" stroke-width="1.5"/>
+      <circle cx="220" cy="220" r="132" fill="none" stroke="#E8C99A" stroke-width="0.8"/>
+      <circle cx="220" cy="220" r="115" fill="none" stroke="#5C3317" stroke-width="1"/>
+      <circle cx="220" cy="220" r="98"  fill="none" stroke="#D4821A" stroke-width="0.6"/>
+      <circle cx="220" cy="220" r="82"  fill="none" stroke="#C4894A" stroke-width="1.8"/>
+      <circle cx="220" cy="220" r="65"  fill="none" stroke="#8B4513" stroke-width="0.8"/>
+      <circle cx="220" cy="220" r="50"  fill="none" stroke="#E8C99A" stroke-width="1.2"/>
+      <circle cx="220" cy="220" r="35"  fill="none" stroke="#5C3317" stroke-width="2"/>
+      <circle cx="220" cy="220" r="20"  fill="none" stroke="#2C1A0E" stroke-width="2.5"/>
+      <circle cx="220" cy="220" r="8"   fill="#2C1A0E"/>
+      <line x1="220" y1="10" x2="220" y2="430" stroke="#C4894A" stroke-width="0.3" stroke-dasharray="4,8" opacity="0.4"/>
+      <line x1="10"  y1="220" x2="430" y2="220" stroke="#C4894A" stroke-width="0.3" stroke-dasharray="4,8" opacity="0.4"/>
+    </svg>
+    <div class="hero-badge">
+      <span class="num">٨+</span>
+      <span class="lbl">سنوات<br>خبرة</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">قشرة الخشب الطبيعية <span class="marquee-dot"></span></span>
+    <span class="marquee-item">نقوش يدوية <span class="marquee-dot"></span></span>
+    <span class="marquee-item">هدايا مميزة <span class="marquee-dot"></span></span>
+    <span class="marquee-item">لوحات ديكور <span class="marquee-dot"></span></span>
+    <span class="marquee-item">أعمال مخصصة <span class="marquee-dot"></span></span>
+    <span class="marquee-item">قشرة الخشب الطبيعية <span class="marquee-dot"></span></span>
+    <span class="marquee-item">نقوش يدوية <span class="marquee-dot"></span></span>
+    <span class="marquee-item">هدايا مميزة <span class="marquee-dot"></span></span>
+    <span class="marquee-item">لوحات ديكور <span class="marquee-dot"></span></span>
+    <span class="marquee-item">أعمال مخصصة <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-photo-wrap reveal">
+    <div class="about-photo-frame">
+      <img src="images/14.jpeg" alt="صورة الفنان" class="about-photo-img">
+      <div class="about-photo-badge">فنان مستقل</div>
+    </div>
+    <div class="about-contact-card">
+      <p class="about-contact-label">تواصل معي</p>
+      <div class="about-contact-list">
+        <a href="https://wa.me/201032253625" class="about-contact-item" target="_blank">
+          <span class="about-contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </span>
+          <span class="about-contact-text">واتساب</span>
+          <span class="about-contact-value" dir="ltr">+20 103 225 3625</span>
+        </a>
+        <a href="https://instagram.com/bark.wood.art" class="about-contact-item" target="_blank">
+          <span class="about-contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </span>
+          <span class="about-contact-text">انستغرام</span>
+          <span class="about-contact-value">@bark.wood.art</span>
+        </a>
+        <a href="mailto:art@barkwood.com" class="about-contact-item">
+          <span class="about-contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          <span class="about-contact-text">البريد</span>
+          <span class="about-contact-value" dir="ltr">art@barkwood.com</span>
+        </a>
+        <a href="https://tiktok.com/@bark.wood.art" class="about-contact-item" target="_blank">
+          <span class="about-contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </span>
+          <span class="about-contact-text">تيك توك</span>
+          <span class="about-contact-value">@bark.wood.art</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right reveal">
+    <p class="section-label">من أنا</p>
+    <h2 class="section-heading">الطبيعة أستاذتي<br>والخشب لغتي</h2>
+    <p class="about-intro" style="margin-top:1.2rem">
+      "كل قطعة قشرة خشب تخبئ لوحة تنتظر من يكشفها"
+    </p>
+    <p class="about-body">
+      بشتغل مع قشرة الخشب الطبيعية من أكتر من ٨ سنين — بحوّل قشور أشجار البلوط والزيتون والسنديان لأعمال فنية تعيش في بيوت الناس وقلوبهم. كل نسيج وكل عقدة في الخشب بتحكي قصة.
+    </p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">١٢٠<span class="stat-unit">+</span></div>
+        <div class="stat-label">عمل فني</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">٤٠<span class="stat-unit">+</span></div>
+        <div class="stat-label">عميل راضي</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">٨<span class="stat-unit">+</span></div>
+        <div class="stat-label">سنين خبرة</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header reveal">
+    <div>
+      <p class="section-label">الأعمال</p>
+      <h2 class="section-heading">معرض الأعمال</h2>
+    </div>
+    <div class="portfolio-filter">
+      <button class="filter-btn active">الكل</button>
+      <button class="filter-btn">لوحات</button>
+      <button class="filter-btn">ديكور</button>
+      <button class="filter-btn">هدايا</button>
+    </div>
+  </div>
+
+  <div class="grid-masonry reveal">
+    <div class="work-card"><img src="images/1.jpeg" alt="عمل ١"><div class="card-overlay"><div class="card-title">العمل الأول</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/2.jpeg" alt="عمل ٢"><div class="card-overlay"><div class="card-title">العمل الثاني</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/3.jpeg" alt="عمل ٣"><div class="card-overlay"><div class="card-title">العمل الثالث</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/4.jpeg" alt="عمل ٤"><div class="card-overlay"><div class="card-title">العمل الرابع</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/5.jpeg" alt="عمل ٥"><div class="card-overlay"><div class="card-title">العمل الخامس</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/6.jpeg" alt="عمل ٦"><div class="card-overlay"><div class="card-title">العمل السادس</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/7.jpeg" alt="عمل ٧"><div class="card-overlay"><div class="card-title">العمل السابع</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/8.jpeg" alt="عمل ٨"><div class="card-overlay"><div class="card-title">العمل الثامن</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/9.jpeg" alt="عمل ٩"><div class="card-overlay"><div class="card-title">العمل التاسع</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/10.jpeg" alt="عمل ١٠"><div class="card-overlay"><div class="card-title">العمل العاشر</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/11.jpeg" alt="عمل ١١"><div class="card-overlay"><div class="card-title">العمل الحادي عشر</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+    <div class="work-card"><img src="images/12.jpeg" alt="عمل ١٢"><div class="card-overlay"><div class="card-title">العمل الثاني عشر</div><div class="card-meta">قشرة خشب طبيعية</div></div></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-header reveal">
+    <p class="section-label">الأسلوب</p>
+    <h2 class="section-heading">إزاي بشتغل؟</h2>
+  </div>
+  <div class="steps-row reveal">
+    <div class="step">
+      <div class="step-num">١</div>
+      <h3 class="step-title">اختيار القشرة</h3>
+      <p class="step-desc">بختار القشرة بعناية من الطبيعة — نسيجها وشكلها والقصة اللي بتحكيها.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">٢</div>
+      <h3 class="step-title">التجهيز</h3>
+      <p class="step-desc">تجفيف وتنظيف بطرق طبيعية تحافظ على جمالها وتضمن ثباتها لسنين.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">٣</div>
+      <h3 class="step-title">التصميم والتركيب</h3>
+      <p class="step-desc">بنفذ التصميم بإيدي القطعة بقطعة لحد ما اللوحة تكتمل.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">٤</div>
+      <h3 class="step-title">التشطيب</h3>
+      <p class="step-desc">لمسات أخيرة بزيوت طبيعية وتوقيع يدوي — وبعدين بتبقى ملكك.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="process-header reveal" style="text-align:center;">
+    <p class="section-label">آراء العملاء</p>
+    <h2 class="section-heading">قالوا إيه عن شغلي</h2>
+  </div>
+  <div class="testimonials-grid reveal">
+    <div class="testimonial-card">
+      <p class="testimonial-text">طلبت لوحة لمكتبي — جات أحسن من اللي تخيلته. النسيج الطبيعي وكأنه بيتنفس على الجدار.</p>
+      <div class="testimonial-author">م. أحمد الغامدي</div>
+      <div class="testimonial-role">مهندس معماري — الرياض</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">أهداهولي جوزي في ذكرى جوازنا. كل يوم بلاقي فيها تفصيلة جديدة — الطبيعة فيها روح.</p>
+      <div class="testimonial-author">سارة المنصور</div>
+      <div class="testimonial-role">مصممة داخلية — جدة</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">اشتريت ٣ قطع لبيتي الجديد. جودة لا تُصدّق والتعامل بأمانة ودقة — بنصح بيه لأي حد.</p>
+      <div class="testimonial-author">خالد البدوي</div>
+      <div class="testimonial-role">رجل أعمال — دبي</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left reveal">
+    <p class="section-label">تواصل</p>
+    <h2 class="contact-tagline">عايز قطعة<br><em>خاصة بيك؟</em></h2>
+    <p class="contact-desc">
+      كل شغلة بعملها فريدة ومش بتتكرر. قولي الحجم والخشب واللي في بالك وهحوّلها لتحفة.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:art@barkwood.com" class="contact-link">art@barkwood.com</a>
+      <a href="https://wa.me/201032253625" class="contact-link">+20 103 225 3625</a>
+      <a href="https://instagram.com/bark.wood.art" class="contact-link">@bark.wood.art</a>
+    </div>
+  </div>
+  <div class="contact-form reveal">
+    <div class="form-row">
+      <div class="form-field"><input type="text" placeholder="اسمك" /></div>
+      <div class="form-field"><input type="email" placeholder="إيميلك" dir="ltr"/></div>
+    </div>
+    <div class="form-field"><input type="text" placeholder="نوع الشغلة المطلوبة" /></div>
+    <div class="form-field"><textarea placeholder="اشرح فكرتك..."></textarea></div>
+    <button class="btn-primary" style="align-self:flex-end; border:none;" onclick="alert('شكراً! هتواصل معاك قريباً 🌿')">
+      ابعت الطلب ←
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">قشرة & خشب</div>
+  <div class="footer-copy">© ٢٠٢٤ — جميع الحقوق محفوظة</div>
+  <div class="footer-social">
+    <a href="https://instagram.com/bark.wood.art">انستغرام</a>
+    <a href="https://tiktok.com/@bark.wood.art">تيك توك</a>
+    <a href="https://wa.me/201032253625">واتساب</a>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 70);
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => obs.observe(el));
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
